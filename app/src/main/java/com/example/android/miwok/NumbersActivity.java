@@ -18,22 +18,14 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         ArrayList<String> numbers = new ArrayList<String>();
-        String[] arrayNumbers = {"one","two","three","four","five","six","seven","eight","nine","ten"};
-//        LinearLayout rootView = (LinearLayout)findViewById(R.id.activity_numbers);
 
-        for (String number : arrayNumbers) {
+        for (String number : DataSource.arrayNumbers) {
             numbers.add(number);
             numbers.add(number);
             numbers.add(number);
-            numbers.add(number);
-//            TextView wordView = new TextView(this);
-//            wordView.setTextSize(20);
-//            wordView.setText(number);
-//            rootView.addView(wordView);
         }
 
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,numbers);
-
         ListView listView = (ListView) findViewById(R.id.activity_numbers);
         listView.setAdapter(itemsAdapter);
     }
