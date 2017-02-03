@@ -7,18 +7,24 @@ package com.example.android.miwok;
 public class Word {
 
     private String miwokWord = "";
-    private String englishWird = "";
+    private String englishWord = "";
+    private String spanishWord = "";
 
-    public Word(String miwokWord, String englishWird) {
+    public Word(String miwokWord, String englishWord, String spanishWord) {
         this.miwokWord = miwokWord;
-        this.englishWird = englishWird;
+        this.englishWord = englishWord;
+        this.spanishWord = spanishWord;
     }
 
     public String getMiwokWord() {
         return miwokWord;
     }
 
-    public String getEnglishWird() {
-        return englishWird;
+    public String getEnglishWord() {
+        return englishWord;
+    }
+
+    public String getSpanishWord() {
+        return spanishWord;
     }
 }

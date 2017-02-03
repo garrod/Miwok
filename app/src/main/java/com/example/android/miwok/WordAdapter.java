@@ -42,7 +42,10 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView numberTextView = (TextView) listItemView.findViewById(R.id.word_two);
         // Get the version number from the current AndroidFlavor object and
         // set this text on the number TextView
-        numberTextView.setText(currentAndroidWord.getEnglishWird());
+        numberTextView.setText(currentAndroidWord.getEnglishWord());
+
+        TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
+        threeTextView.setText(currentAndroidWord.getSpanishWord());
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
