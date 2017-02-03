@@ -17,7 +17,7 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        WordAdapter itemsAdapter = new WordAdapter(this, new DataSource().getNumberList());
+        WordAdapter itemsAdapter = new WordAdapter(this, DataSource.getNumberList());
         ListView listView = (ListView) findViewById(R.id.activity_numbers);
         listView.setAdapter(itemsAdapter);
     }

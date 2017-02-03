@@ -18,7 +18,7 @@ public class PhrasesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phrases);
 
         GridView gridView = (GridView) findViewById(R.id.activity_phrases);
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,new DataSource().getGridList());
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, DataSource.getGridList());
         gridView.setAdapter(itemsAdapter);
     }
 }

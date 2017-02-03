@@ -24,6 +24,9 @@ public class WordAdapter extends ArrayAdapter<Word> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View listItemView = convertView;
+
+        // first check to see if the view is null. if so, we have to inflate it.
+        // to inflate it basically means to render, or show, the view.
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_layout, parent, false);
