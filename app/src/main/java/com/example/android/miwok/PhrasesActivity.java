@@ -17,16 +17,8 @@ public class PhrasesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases);
 
-        GridView gridView = (GridView) findViewById(R.id.activity_phrases);
-
-        ArrayList<String> phrases = new ArrayList<String>();
-        for (String number : DataSource.arrayNumbers) {
-            phrases.add(number);
-            phrases.add(number);
-            phrases.add(number);
-        }
-
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,phrases);
-        gridView.setAdapter(itemsAdapter);
+//        GridView gridView = (GridView) findViewById(R.id.activity_phrases);
+//        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,new DataSource().getNumberList());
+//        gridView.setAdapter(itemsAdapter);
     }
 }
