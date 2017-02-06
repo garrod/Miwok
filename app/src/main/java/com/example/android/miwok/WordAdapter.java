@@ -1,11 +1,11 @@
 package com.example.android.miwok;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,8 +47,15 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // set this text on the number TextView
         numberTextView.setText(currentAndroidWord.getEnglishWord());
 
-        TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
-        threeTextView.setText(currentAndroidWord.getSpanishWord());
+        if(currentAndroidWord.hasSpanish()) {
+            TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
+            threeTextView.setText(currentAndroidWord.getSpanishWord());
+        }
+
+        if(currentAndroidWord.hasImage()) {
+            ImageView imagesrc = (ImageView) listItemView.findViewById(R.id.image);
+            imagesrc.setImageResource(currentAndroidWord.getmImageResourceId());
+        }
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

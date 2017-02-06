@@ -48,5 +48,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView family = (TextView)findViewById(R.id.family);
+        family.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FamilyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView colors = (TextView)findViewById(R.id.colors);
+        colors.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ColorsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
