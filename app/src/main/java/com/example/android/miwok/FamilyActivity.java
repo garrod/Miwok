@@ -11,7 +11,7 @@ public class FamilyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
-        WordAdapter itemsAdapter = new WordAdapter(this, DataSource.getFamilyList());
+        WordAdapter itemsAdapter = new WordAdapter(this, DataSource.getFamilyList(), R.color.category_family);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
     }

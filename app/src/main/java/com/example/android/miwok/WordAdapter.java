@@ -1,6 +1,8 @@
 package com.example.android.miwok;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +18,11 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    public WordAdapter(Context context, ArrayList<Word> resource) {
+    private int mColorResourceId;
+
+    public WordAdapter(Context context, ArrayList<Word> resource, int colorResourceId) {
         super(context, 0, resource);
+        mColorResourceId = colorResourceId;
     }
 
     @Override
@@ -47,15 +52,33 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // set this text on the number TextView
         numberTextView.setText(currentAndroidWord.getEnglishWord());
 
-        if(currentAndroidWord.hasSpanish()) {
-            TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
-            threeTextView.setText(currentAndroidWord.getSpanishWord());
-        }
+//        TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
+//        if(currentAndroidWord.hasSpanish()) {
+//            Log.v("log","jest hiszpanski");
+//            threeTextView.setText(currentAndroidWord.getSpanishWord());
+//            threeTextView.setVisibility(View.VISIBLE);
+//            nameTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_1));
+//            numberTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_2));
+//            threeTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_3));
+//        }
+//        else {
+//            Log.v("log","nie ma hiszpanskiego");
+//            threeTextView.setVisibility(View.GONE);
+//        }
+
+        ImageView imagesrc = (ImageView) listItemView.findViewById(R.id.image);
 
         if(currentAndroidWord.hasImage()) {
-            ImageView imagesrc = (ImageView) listItemView.findViewById(R.id.image);
             imagesrc.setImageResource(currentAndroidWord.getmImageResourceId());
+            imagesrc.setVisibility(View.VISIBLE);
         }
+        else {
+            imagesrc.setVisibility(View.GONE);
+        }
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color = ContextCompat.getColor(getContext(),mColorResourceId);
+        textContainer.setBackgroundColor(color);
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

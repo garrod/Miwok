@@ -11,7 +11,7 @@ public class ColorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
-        WordAdapter itemsAdapter = new WordAdapter(this, DataSource.getColorList());
+        WordAdapter itemsAdapter = new WordAdapter(this, DataSource.getColorList(),R.color.category_colors);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
     }

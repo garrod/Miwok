@@ -75,18 +75,6 @@ public final class DataSource {
             R.drawable.family_younger_sister
     };
 
-//    public static ArrayList<Word> getPhrasesList() {
-//        return generateTranslateList();
-//    }
-//
-//    private static ArrayList<Word> generateTranslateList() {
-//        ArrayList<Word> words = new ArrayList<Word>();
-//        for (int i = 0; i< englisWords.length; i++) {
-//            words.add(new Word(englisWords[i],polishWords[i],spanishWords[i]));
-//        }
-//        return words;
-//    }
-
     public static ArrayList<String> getGridList() {
         ArrayList<String> wordsString = new ArrayList<String>();
         for (int i = 0; i< englishWords.length; i++) {

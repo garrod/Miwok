@@ -34,4 +34,12 @@
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
+
+    <!-- text color for all list-->
+    <color name="list_font_color">#ffffff</color>
+
+    <!-- kolory do grida-->
+    <color name="grid_color_1">#e2e2e2</color>
+    <color name="grid_color_2">#a9a9a9</color>
+    <color name="grid_color_3">#c3c3c3</color>
 </resources>
