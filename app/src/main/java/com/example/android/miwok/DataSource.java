@@ -35,6 +35,23 @@ public final class DataSource {
             R.drawable.number_four,
             R.drawable.number_five
     };
+    private static int[] numberSounds = {
+            R.raw.number_one,
+            R.raw.number_two,
+            R.raw.number_three,
+            R.raw.number_four,
+            R.raw.number_five,
+            R.raw.number_six,
+            R.raw.number_seven,
+            R.raw.number_eight,
+            R.raw.number_nine,
+            R.raw.number_ten,
+            R.raw.number_one,
+            R.raw.number_two,
+            R.raw.number_three,
+            R.raw.number_four,
+            R.raw.number_five
+    };
     private static int[] colorImages = {
             R.drawable.color_black,
             R.drawable.color_brown,
@@ -51,6 +68,16 @@ public final class DataSource {
             R.drawable.color_green,
             R.drawable.color_mustard_yellow,
             R.drawable.color_red
+    };
+    private static int[] colorSounds = {
+            R.raw.color_black,
+            R.raw.color_brown,
+            R.raw.color_dusty_yellow,
+            R.raw.color_gray,
+            R.raw.color_green,
+            R.raw.color_mustard_yellow,
+            R.raw.color_red,
+            R.raw.color_white
     };
     private static int[] familyImages= {
             R.drawable.family_daughter,
@@ -74,9 +101,21 @@ public final class DataSource {
             R.drawable.family_younger_brother,
             R.drawable.family_younger_sister
     };
+    private static int familySounds[] = {
+            R.raw.family_daughter,
+            R.raw.family_father,
+            R.raw.family_grandfather,
+            R.raw.family_grandmother,
+            R.raw.family_mother,
+            R.raw.family_older_brother,
+            R.raw.family_older_sister,
+            R.raw.family_son,
+            R.raw.family_younger_brother,
+            R.raw.family_younger_sister
+    };
 
     public static ArrayList<String> getGridList() {
-        ArrayList<String> wordsString = new ArrayList<String>();
+        final ArrayList<String> wordsString = new ArrayList<String>();
         for (int i = 0; i< englishWords.length; i++) {
             wordsString.add(englishWords[i]);
             wordsString.add(polishWords[i]);
@@ -88,23 +127,23 @@ public final class DataSource {
     public static ArrayList<Word> getNumberList() {
         ArrayList<Word> words = new ArrayList<Word>();
         for (int i = 0; i< englishWords.length; i++) {
-            words.add(new Word(englishWords[i],polishWords[i],numberImages[i]));
+            words.add(new Word(englishWords[i],polishWords[i],numberImages[i],numberSounds[i]));
         }
         return words;
     }
 
     public static ArrayList<Word> getColorList() {
-        ArrayList<Word> words = new ArrayList<Word>();
+        final ArrayList<Word> words = new ArrayList<Word>();
         for (int i = 0; i< englishColors.length; i++) {
-            words.add(new Word(englishColors[i],polishColors[i],colorImages[i]));
+            words.add(new Word(englishColors[i],polishColors[i],colorImages[i],colorSounds[i]));
         }
         return words;
     }
 
     public static ArrayList<Word> getFamilyList() {
-        ArrayList<Word> words = new ArrayList<Word>();
+        final ArrayList<Word> words = new ArrayList<Word>();
         for (int i = 0; i< englishFamily.length; i++) {
-            words.add(new Word(englishFamily[i],polishFamily[i],familyImages[i]));
+            words.add(new Word(englishFamily[i],polishFamily[i],familyImages[i],familySounds[i]));
         }
         return words;
     }

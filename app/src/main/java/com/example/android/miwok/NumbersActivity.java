@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class NumbersActivity extends AppCompatActivity {
 
     public MediaPlayer mMediaPlayer;
@@ -17,29 +19,21 @@ public class NumbersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
+        final ArrayList<Word> words = DataSource.getNumberList();
 
-        WordAdapter itemsAdapter = new WordAdapter(this, DataSource.getNumberList(), R.color.category_numbers);
+        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
-        Log.v("log","wchodzi tutaj");
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(NumbersActivity.this, "List item click", Toast.LENGTH_SHORT).show();
 
-                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, R.raw.number_one);
+                Word word = words.get(position);
+                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourcesId());
                 mMediaPlayer.start();
             }
         });
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, R.raw.number_one);
-//                mMediaPlayer.start();
-//                Toast.makeText(NumbersActivity.this, "List item click", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }
