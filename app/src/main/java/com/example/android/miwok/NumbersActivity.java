@@ -1,5 +1,7 @@
 package com.example.android.miwok;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class NumbersActivity extends AppCompatActivity {
-
-    public MediaPlayer mMediaPlayer;
+public class NumbersActivity extends MediaPlayerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,17 @@ public class NumbersActivity extends AppCompatActivity {
                 Toast.makeText(NumbersActivity.this, "List item click", Toast.LENGTH_SHORT).show();
 
                 Word word = words.get(position);
-                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourcesId());
-                mMediaPlayer.start();
+                releaseMediaPlayer();
+
+                int result = mAudioManager.requestAudioFocus(mAudioManagerListener,
+                        AudioManager.STREAM_MUSIC,
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourcesId());
+                    mMediaPlayer.start();
+                    mMediaPlayer.setOnCompletionListener(mMediaPlayerEventListener);
+                }
             }
         });
     }
