@@ -33,15 +33,17 @@ public class NumbersActivity extends MediaPlayerActivity {
                 Word word = words.get(position);
                 releaseMediaPlayer();
 
-                int result = mAudioManager.requestAudioFocus(mAudioManagerListener,
-                        AudioManager.STREAM_MUSIC,
-                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
-
-                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourcesId());
-                    mMediaPlayer.start();
-                    mMediaPlayer.setOnCompletionListener(mMediaPlayerEventListener);
-                }
+                setListeners(NumbersActivity.this, word);
+//
+//                int result = mAudioManager.requestAudioFocus(mAudioManagerListener,
+//                        AudioManager.STREAM_MUSIC,
+//                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+//
+//                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+//                    mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourcesId());
+//                    mMediaPlayer.start();
+//                    mMediaPlayer.setOnCompletionListener(mMediaPlayerEventListener);
+//                }
             }
         });
     }

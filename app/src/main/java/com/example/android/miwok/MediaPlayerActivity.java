@@ -48,21 +48,17 @@ public class MediaPlayerActivity extends AppCompatActivity {
         };
     }
 
-//    public void setListeners(String className, Word word) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-//        int result = mAudioManager.requestAudioFocus(mAudioManagerListener,
-//                AudioManager.STREAM_MUSIC,
-//                AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
-//
-//        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-//
-//            Class classTemp = Class.forName(className);
-//            Object obj = classTemp.newInstance();
-//
-//            mMediaPlayer = MediaPlayer.create(classTemp, word.getmAudioResourcesId());
-//            mMediaPlayer.start();
-//            mMediaPlayer.setOnCompletionListener(mMediaPlayerEventListener);
-//        }
-//    }
+    public void setListeners(MediaPlayerActivity activity, Word word)  {
+        int result = mAudioManager.requestAudioFocus(mAudioManagerListener,
+                AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            mMediaPlayer = MediaPlayer.create(activity, word.getmAudioResourcesId());
+            mMediaPlayer.start();
+            mMediaPlayer.setOnCompletionListener(mMediaPlayerEventListener);
+        }
+    }
 
 
     /**
