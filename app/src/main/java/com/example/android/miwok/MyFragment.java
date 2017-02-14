@@ -1,22 +1,30 @@
 package com.example.android.miwok;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
- * Created by krzysztof on 09.02.2017.
+ * A simple {@link Fragment} subclass.
  */
-
-public class MediaPlayerActivity extends AppCompatActivity {
+public class MyFragment extends Fragment {
 
     public MediaPlayer mMediaPlayer;
     public AudioManager mAudioManager;
     public AudioManager.OnAudioFocusChangeListener mAudioManagerListener;
+
+    public MyFragment() {
+        // Required empty public constructor
+    }
 
     /*
     * event listener that will be used in all activity for releas mMediaPlayer when the sound is complete
@@ -29,12 +37,15 @@ public class MediaPlayerActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container,false);
 
-        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         mAudioManagerListener = new AudioManager.OnAudioFocusChangeListener() {
             public void onAudioFocusChange(int focusChange) {
+                if (mMediaPlayer == null)
+                    return;
                 if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                     releaseMediaPlayer();
                 } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT
@@ -46,15 +57,16 @@ public class MediaPlayerActivity extends AppCompatActivity {
                 }
             }
         };
+        return rootView;
     }
 
-    public void setListeners(MediaPlayerActivity activity, Word word)  {
+    public void setListeners(FragmentActivity fragmentActivity, Word word)  {
         int result = mAudioManager.requestAudioFocus(mAudioManagerListener,
                 AudioManager.STREAM_MUSIC,
                 AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
         if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-            mMediaPlayer = MediaPlayer.create(activity, word.getmAudioResourcesId());
+            mMediaPlayer = MediaPlayer.create(fragmentActivity, word.getmAudioResourcesId());
             mMediaPlayer.start();
             mMediaPlayer.setOnCompletionListener(mMediaPlayerEventListener);
         }
@@ -75,14 +87,14 @@ public class MediaPlayerActivity extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
-
             mAudioManager.abandonAudioFocus(mAudioManagerListener);
         }
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         releaseMediaPlayer();
     }
+
 }

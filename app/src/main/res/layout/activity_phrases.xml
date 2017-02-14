@@ -9,7 +9,6 @@
     android:verticalSpacing="10dp"
     android:horizontalSpacing="10dp"
     android:stretchMode="columnWidth"
-    android:gravity="center"
-    tools:context="com.example.android.miwok.PhrasesActivity">
+    android:gravity="center">
 
 </GridView>

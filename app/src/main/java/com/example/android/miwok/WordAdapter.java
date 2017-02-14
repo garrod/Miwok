@@ -52,19 +52,19 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // set this text on the number TextView
         numberTextView.setText(currentAndroidWord.getEnglishWord());
 
-//        TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
-//        if(currentAndroidWord.hasSpanish()) {
-//            Log.v("log","jest hiszpanski");
-//            threeTextView.setText(currentAndroidWord.getSpanishWord());
-//            threeTextView.setVisibility(View.VISIBLE);
-//            nameTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_1));
-//            numberTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_2));
-//            threeTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_3));
-//        }
-//        else {
-//            Log.v("log","nie ma hiszpanskiego");
-//            threeTextView.setVisibility(View.GONE);
-//        }
+        TextView threeTextView = (TextView) listItemView.findViewById(R.id.word_three);
+        if(currentAndroidWord.hasSpanish()) {
+            Log.v("log","jest hiszpanski");
+            threeTextView.setText(currentAndroidWord.getSpanishWord());
+            threeTextView.setVisibility(View.VISIBLE);
+            nameTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_1));
+            numberTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_2));
+            threeTextView.setBackgroundColor(ContextCompat.getColor(getContext(),R.color.grid_color_3));
+        }
+        else {
+            Log.v("log","nie ma hiszpanskiego");
+            threeTextView.setVisibility(View.GONE);
+        }
 
         ImageView imagesrc = (ImageView) listItemView.findViewById(R.id.image);
 

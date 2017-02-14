@@ -124,6 +124,14 @@ public final class DataSource {
         return wordsString;
     }
 
+    public static ArrayList<Word> getPhrasesList() {
+        ArrayList<Word> words = new ArrayList<Word>();
+        for (int i = 0; i< englishWords.length; i++) {
+            words.add(new Word(englishWords[i],polishWords[i],spanishWords[i],numberImages[i]));
+        }
+        return words;
+    }
+
     public static ArrayList<Word> getNumberList() {
         ArrayList<Word> words = new ArrayList<Word>();
         for (int i = 0; i< englishWords.length; i++) {

@@ -15,11 +15,11 @@ public class Word {
     private static final int NO_IMAGE_PROVIDED = -1;
     private static final String NO_SPANISH_TRANSLATE= "";
 
-    public Word(String miwokWord, String englishWord, String spanishWord, int audioResourcesId) {
+    public Word(String miwokWord, String englishWord, String spanishWord, int mImageResourceId) {
         this.miwokWord = miwokWord;
         this.englishWord = englishWord;
         this.spanishWord = spanishWord;
-        mAudioResourcesId = audioResourcesId;
+        this.mImageResourceId = mImageResourceId;
     }
 
     public Word(String englishWord, String miwokWord, int mImageResourceId, int audioResourcesId) {
